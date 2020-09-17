@@ -1,6 +1,7 @@
 import React from 'react';
 import Counter from './Counter';
 import Hello from './Hello';
+import InputSample from './InputSample';
 import Wrapper from './Wrapper';
 
 function App() {
@@ -12,6 +13,9 @@ function App() {
       </Wrapper>
       <Wrapper name='Counter(useState)'>
         <Counter />
+      </Wrapper>
+      <Wrapper name='InputSample(useState)'>
+        <InputSample />
       </Wrapper>
     </>
   );
