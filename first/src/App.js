@@ -65,29 +65,29 @@ function App() {
       username: username,
       email: email
     };
-    setUsers([...users, user])
+    setUsers(users => users.concat(user));
     setInputs({
       username: '',
       email: ''
     })
     nextId.current += 1;
-  }, [username, email, users]);
+  }, [username, email]);
   
   const onRemove = useCallback(id => {
-    setUsers(users.filter(user => user.id !== id));
-  }, [users]);
+    setUsers(users => users.filter(user => user.id !== id));
+  }, []);
 
   const onToggle = useCallback(id => {
-    setUsers(users.map(user => {
+    setUsers(users => users.map(user => {
       return user.id === id ? {...user, active: !user.active} : user;
     }))
-  }, [users]);
+  }, []);
 
   const count = useMemo(() => countActiveUsers(users), [users]);
 
   return (
     <>
-      <Wrapper name='props, 조건부렌더링'>
+      {/* <Wrapper name='props, 조건부렌더링'>
         <Hello isSpecial={true}/>
         <Hello name='react' />
       </Wrapper>
@@ -99,7 +99,7 @@ function App() {
       </Wrapper>
       <Wrapper name='UserList(배열 다루기)'>
         <UserList users={users} onRemove={onRemove} onToggle={onToggle} />
-      </Wrapper>
+      </Wrapper> */}
       <Wrapper name='UserList(배열 다루기)'>
         <CreateUser
           username={username}
