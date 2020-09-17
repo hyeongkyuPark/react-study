@@ -3,6 +3,7 @@ import Counter from './Counter';
 import CreateUser from './CreateUser';
 import Hello from './Hello';
 import InputSample from './InputSample';
+import ReducerCounter from './ReducerCounter';
 import UserList from './UserList';
 import Wrapper from './Wrapper';
 
@@ -87,7 +88,7 @@ function App() {
 
   return (
     <>
-      {/* <Wrapper name='props, 조건부렌더링'>
+      <Wrapper name='props, 조건부렌더링'>
         <Hello isSpecial={true}/>
         <Hello name='react' />
       </Wrapper>
@@ -99,7 +100,7 @@ function App() {
       </Wrapper>
       <Wrapper name='UserList(배열 다루기)'>
         <UserList users={users} onRemove={onRemove} onToggle={onToggle} />
-      </Wrapper> */}
+      </Wrapper>
       <Wrapper name='UserList(배열 다루기)'>
         <CreateUser
           username={username}
@@ -109,6 +110,9 @@ function App() {
         />
         <UserList users={users} onRemove={onRemove} onToggle={onToggle} />
         <div>활성 사용자 수 : {count}</div>
+      </Wrapper>
+      <Wrapper>
+        <ReducerCounter />
       </Wrapper>
     </>
   );
