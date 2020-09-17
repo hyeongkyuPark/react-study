@@ -59,10 +59,13 @@ function App() {
       username: '',
       email: ''
     })
-    console.log(nextId.current);
     nextId.current += 1;
   }
   
+  const onRemove = id => {
+    setUsers(users.filter(user => user.id !== id));
+  }
+
   return (
     <>
       <Wrapper name='props, 조건부렌더링'>
@@ -76,7 +79,7 @@ function App() {
         <InputSample />
       </Wrapper>
       <Wrapper name='UserList(배열 다루기)'>
-        <UserList users={users} />
+        <UserList users={users} onRemove={onRemove} />
       </Wrapper>
       <Wrapper name='UserList(배열 다루기)'>
         <CreateUser
@@ -85,7 +88,7 @@ function App() {
           onChange={onChange}
           onCreate={onCreate} 
         />
-        <UserList users={users} />
+        <UserList users={users} onRemove={onRemove} />
       </Wrapper>
     </>
   );
