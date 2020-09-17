@@ -9,30 +9,7 @@ function User({ user }) {
     )
 }
 
-function UserList() {
-    const users = [
-        {
-            id: 1,
-            username: 'kim',
-            email: 'kim@naver.com'
-        },
-        {
-            id: 2,
-            username: 'lee',
-            email: 'lee@naver.com'
-        },
-        {
-            id: 3,
-            username: 'sin',
-            email: 'sin@naver.com'
-        },
-        {
-            id: 4,
-            username: 'park',
-            email: 'park@naver.com'
-        }
-    ];
-
+function UserList({ users }) {
 
     return (
         <div>

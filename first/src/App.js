@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import Counter from './Counter';
 import Hello from './Hello';
 import InputSample from './InputSample';
@@ -6,6 +6,36 @@ import UserList from './UserList';
 import Wrapper from './Wrapper';
 
 function App() {
+  const users = [
+    {
+        id: 1,
+        username: 'kim',
+        email: 'kim@naver.com'
+    },
+    {
+        id: 2,
+        username: 'lee',
+        email: 'lee@naver.com'
+    },
+    {
+        id: 3,
+        username: 'sin',
+        email: 'sin@naver.com'
+    },
+    {
+        id: 4,
+        username: 'park',
+        email: 'park@naver.com'
+    }
+  ];
+
+  const nextId = useRef(4);
+  
+  const onCreate = () => {
+    console.log(nextId.current);
+    nextId.current += 1;
+  }
+  
   return (
     <>
       <Wrapper name='props, 조건부렌더링'>
@@ -19,7 +49,7 @@ function App() {
         <InputSample />
       </Wrapper>
       <Wrapper name='UserList(배열 다루기)'>
-        <UserList />
+        <UserList users={users} />
       </Wrapper>
     </>
   );
