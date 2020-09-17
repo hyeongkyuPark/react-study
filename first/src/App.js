@@ -27,22 +27,26 @@ function App() {
     {
         id: 1,
         username: 'kim',
-        email: 'kim@naver.com'
+        email: 'kim@naver.com',
+        active: true
     },
     {
         id: 2,
         username: 'lee',
-        email: 'lee@naver.com'
+        email: 'lee@naver.com',
+        active: false
     },
     {
         id: 3,
         username: 'sin',
-        email: 'sin@naver.com'
+        email: 'sin@naver.com',
+        active: false
     },
     {
         id: 4,
         username: 'park',
-        email: 'park@naver.com'
+        email: 'park@naver.com',
+        active: false
     }
   ]);
 
@@ -66,6 +70,12 @@ function App() {
     setUsers(users.filter(user => user.id !== id));
   }
 
+  const onToggle = id => {
+    setUsers(users.map(user => {
+      return user.id === id ? {...user, active: !user.active} : user;
+    }))
+  }
+
   return (
     <>
       <Wrapper name='props, 조건부렌더링'>
@@ -79,7 +89,7 @@ function App() {
         <InputSample />
       </Wrapper>
       <Wrapper name='UserList(배열 다루기)'>
-        <UserList users={users} onRemove={onRemove} />
+        <UserList users={users} onRemove={onRemove} onToggle={onToggle} />
       </Wrapper>
       <Wrapper name='UserList(배열 다루기)'>
         <CreateUser
@@ -88,7 +98,7 @@ function App() {
           onChange={onChange}
           onCreate={onCreate} 
         />
-        <UserList users={users} onRemove={onRemove} />
+        <UserList users={users} onRemove={onRemove} onToggle={onToggle} />
       </Wrapper>
     </>
   );
