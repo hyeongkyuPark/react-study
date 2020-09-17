@@ -2,6 +2,7 @@ import React from 'react';
 import Counter from './Counter';
 import Hello from './Hello';
 import InputSample from './InputSample';
+import UserList from './UserList';
 import Wrapper from './Wrapper';
 
 function App() {
@@ -16,6 +17,9 @@ function App() {
       </Wrapper>
       <Wrapper name='InputSample(useState)'>
         <InputSample />
+      </Wrapper>
+      <Wrapper name='UserList(배열 다루기)'>
+        <UserList />
       </Wrapper>
     </>
   );
