@@ -1,4 +1,4 @@
-import React, { useRef, useState, useMemo } from 'react';
+import React, { useRef, useState, useMemo, useCallback } from 'react';
 import Counter from './Counter';
 import CreateUser from './CreateUser';
 import Hello from './Hello';
@@ -21,14 +21,14 @@ function App() {
 
   const { username, email } = inputs;
 
-  const onChange = e => {
+  const onChange = useCallback(e => {
     const {name, value} = e.target;
 
     setInputs({
       ...inputs,
       [name]: value
     });
-  }
+  }, [inputs])
 
   const [users, setUsers] = useState([
     {
@@ -59,7 +59,7 @@ function App() {
 
   const nextId = useRef(5);
   
-  const onCreate = () => {
+  const onCreate = useCallback(() => {
     const user = {
       id: nextId.current,
       username: username,
@@ -71,17 +71,17 @@ function App() {
       email: ''
     })
     nextId.current += 1;
-  }
+  }, [username, email, users]);
   
-  const onRemove = id => {
+  const onRemove = useCallback(id => {
     setUsers(users.filter(user => user.id !== id));
-  }
+  }, [users]);
 
-  const onToggle = id => {
+  const onToggle = useCallback(id => {
     setUsers(users.map(user => {
       return user.id === id ? {...user, active: !user.active} : user;
     }))
-  }
+  }, [users]);
 
   const count = useMemo(() => countActiveUsers(users), [users]);
 
