@@ -8,6 +8,7 @@ import UserList from './UserList';
 import Wrapper from './Wrapper';
 
 import useInputs from './useInputs';
+import ContextSample from './ContextSample';
 
 
 
@@ -142,6 +143,9 @@ function App() {
       </Wrapper>
       <Wrapper name='ReducerCounter'>
         <ReducerCounter />
+      </Wrapper>
+      <Wrapper name='Context API : 전역값 관리'>
+        <ContextSample />
       </Wrapper>
     </>
   );
